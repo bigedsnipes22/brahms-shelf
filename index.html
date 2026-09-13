@@ -537,15 +537,18 @@ code{font:400 12px var(--data);color:var(--rules)}
      whose image URLs can't be rebuilt here. Opens at the holding library. */
   var EXTERNAL = {
     lib:"Juilliard Manuscript Collection",
-    note:"Opens in Juilliard's own viewer — its image names aren't reconstructable.",
+    note:"Catalogue records, not a contact sheet \u2014 their own page viewer is currently erroring. The record page still shows a thumbnail and the description.",
     w:[
-      {t:"Deutsche Volkslieder, WoO 32 — sketches", d:"Autograph working manuscript: drafts of the piano accompaniments to five songs.", u:"https://juilliardmanuscriptcollection.org/phpviewer/index.php?path=BRAH_DEVO"},
-      {t:"Im Garten am Seegestade, Op. 70 no. 1", d:"Holograph, signed, inscribed “Wien Febr. 77”.", u:"https://juilliardmanuscriptcollection.org/phpviewer/index.php?path=BRAH_GE70"},
-      {t:"Sehnsucht, Op. 49 no. 3", d:"Holograph, signed. From Simrock's own collection.", u:"https://juilliardmanuscriptcollection.org/phpviewer/index.php?path=BRAH_LI49"},
-      {t:"Sechs Klavierstücke, Op. 118", d:"Simrock engraver's copy in Kupfer's hand, with Brahms's autograph title page and revisions in black, blue and green crayon.", u:"https://juilliardmanuscriptcollection.org/phpviewer/index.php?path=BRAH_K118"},
-      {t:"Vier Klavierstücke, Op. 119", d:"The companion engraver's copy, sharing the same autograph title page.", u:"https://juilliardmanuscriptcollection.org/phpviewer/index.php?path=BRAH_K119"},
-      {t:"Symphony No. 2, Op. 73 — first movement", d:"Hlavaczek's copy with Brahms's autograph title and extensive annotation.", u:"https://juilliardmanuscriptcollection.org/phpviewer/index.php?path=BRAH_SYM2"},
-      {t:"Double Concerto, Op. 102", d:"Kupfer's copy, Thun 1888, revised by Brahms, with the solo violin altered in Joachim's hand.", u:"https://juilliardmanuscriptcollection.org/phpviewer/index.php?path=BRAH_DOCO"}
+      {t:"Deutsche Volkslieder, WoO 32 \u2014 sketches", d:"Autograph working manuscript: drafts of the piano accompaniments to five songs.", u:"https://juilliardmanuscriptcollection.org/deutsche-volkslieder-woo-32-sketches/"},
+      {t:"Im Garten am Seegestade, Op. 70 no. 1", d:"Holograph, signed, inscribed \u201CWien Febr. 77\u201D.", u:"https://juilliardmanuscriptcollection.org/im-garten-am-seegestade-op-70-no-1/"},
+      {t:"Sehnsucht, Op. 49 no. 3", d:"Holograph, signed. From Simrock's own collection.", u:"https://juilliardmanuscriptcollection.org/sehnsucht-op-49-no-3/"},
+      {t:"Sechs Klavierst\u00FCcke, Op. 118", d:"Simrock engraver's copy in Kupfer's hand, with Brahms's autograph title page and revisions in black, blue and green crayon.", u:"https://juilliardmanuscriptcollection.org/sechs-klavierstucke-for-piano-op-118/"},
+      {t:"Vier Klavierst\u00FCcke, Op. 119", d:"The companion engraver's copy, sharing the same autograph title page.", u:"https://juilliardmanuscriptcollection.org/vier-klavierstucke-piano-op-119/"},
+      {t:"Symphony No. 2, Op. 73 \u2014 first movement", d:"Hlavaczek's copy with Brahms's autograph title and extensive annotation.", u:"https://juilliardmanuscriptcollection.org/symphony-no-2-op-73-in-d-major-allegro-non-troppo-first-movement/"},
+      {t:"Double Concerto, Op. 102", d:"Kupfer's copy, Thun 1888, revised by Brahms, with the solo violin altered in Joachim's hand.", u:"https://juilliardmanuscriptcollection.org/double-concerto-for-violin-and-cello-with-orchestra-op-102-in-a-minor/"},
+      {t:"Piano Quartet No. 3, Op. 60 \u2014 movements 3\u20134", d:"Engraver's copy in an unidentified hand, revised by Brahms.", u:"https://juilliardmanuscriptcollection.org/quartet-for-piano-and-strings-no-3-op-60-in-c-minor-andante-and-allegro-comodo-third-and-fourth-movements/"},
+      {t:"String Quintet, Op. 88", d:"Simrock proof copy, Berlin 1882, annotated by Brahms.", u:"https://juilliardmanuscriptcollection.org/string-quintet-op-88-in-f-major/"},
+      {t:"Piano Concerto No. 2, Op. 83 \u2014 two pianos", d:"The first edition used as an engraver's copy, annotated.", u:"https://juilliardmanuscriptcollection.org/piano-concerto-no-2-op-83-in-b-flat-major-arranged-for-2-pianos/"}
     ]
   };
 
@@ -596,7 +599,7 @@ code{font:400 12px var(--data);color:var(--rules)}
     var sec = document.createElement("section");
     sec.className = "coll";
     var h = document.createElement("h2");
-    h.innerHTML = esc(EXTERNAL.lib) + '<span class="cnt">' + EXTERNAL.w.length + " · link</span>";
+    h.innerHTML = esc(EXTERNAL.lib) + '<span class="cnt">' + EXTERNAL.w.length + " · records</span>";
     sec.appendChild(h);
     var note = document.createElement("p");
     note.className = "cnote";
@@ -607,7 +610,7 @@ code{font:400 12px var(--data);color:var(--rules)}
       a.className = "work ext";
       a.href = x.u; a.target = "_blank"; a.rel = "noopener";
       a.dataset.hay = (x.t + " " + x.d + " juilliard").toLowerCase();
-      a.innerHTML = '<span class="t">' + esc(x.t) + '</span><span class="n">open ↗</span>' +
+      a.innerHTML = '<span class="t">' + esc(x.t) + '</span><span class="n">record ↗</span>' +
                     '<span class="d">' + esc(x.d) + '</span>';
       sec.appendChild(a);
     });
