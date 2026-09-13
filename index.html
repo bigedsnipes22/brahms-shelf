@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#E3E7E4" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#15191A" media="(prefers-color-scheme: dark)">
-<meta name="description" content="Every digitized Brahms autograph at the Library of Congress as a contact sheet, going straight to the native-resolution file.">
+<meta name="description" content="Every Brahms music autograph that is online anywhere, as a contact sheet, going straight to the native-resolution file.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23463423'/%3E%3Cg stroke='%23F6F3EC' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath d='M5 9h22M5 13h22M5 17h22M5 21h22M5 25h22'/%3E%3C/g%3E%3Cellipse cx='12' cy='21' rx='4' ry='3' fill='%23F6F3EC' transform='rotate(-18 12 21)'/%3E%3Cpath d='M15.6 20V8.5' stroke='%23F6F3EC' stroke-width='1.8'/%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23463423'/%3E%3Cg stroke='%23F6F3EC' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath d='M5 9h22M5 13h22M5 17h22M5 21h22M5 25h22'/%3E%3C/g%3E%3Cellipse cx='12' cy='21' rx='4' ry='3' fill='%23F6F3EC' transform='rotate(-18 12 21)'/%3E%3Cpath d='M15.6 20V8.5' stroke='%23F6F3EC' stroke-width='1.8'/%3E%3C/svg%3E">
 <title>Brahms Autograph Shelf</title>
@@ -39,35 +39,19 @@
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
-    --ground:#15191A;
-    --surface:#1D2222;
-    --raised:#252B2A;
-    --ink:#E2E7E1;
-    --muted:#98A099;
-    --faint:#78807A;
-    --rule:#333B38;
-    --rule-soft:#2A3230;
-    --pen:#CDA87A;
-    --rules:#9D8459;
-    --on-pen:#181310;
-    --sheet-ground:#0F1213;
+    --ground:#15191A; --surface:#1D2222; --raised:#252B2A;
+    --ink:#E2E7E1; --muted:#98A099; --faint:#78807A;
+    --rule:#333B38; --rule-soft:#2A3230;
+    --pen:#CDA87A; --rules:#9D8459; --on-pen:#181310; --sheet-ground:#0F1213;
     --shadow:0 1px 2px rgba(0,0,0,.5), 0 3px 12px rgba(0,0,0,.4);
     --shadow-lift:0 2px 8px rgba(0,0,0,.6), 0 14px 34px rgba(0,0,0,.5);
   }
 }
 :root[data-theme="dark"]{
-  --ground:#15191A;
-  --surface:#1D2222;
-  --raised:#252B2A;
-  --ink:#E2E7E1;
-  --muted:#98A099;
-  --faint:#78807A;
-  --rule:#333B38;
-  --rule-soft:#2A3230;
-  --pen:#CDA87A;
-  --rules:#9D8459;
-  --on-pen:#181310;
-  --sheet-ground:#0F1213;
+  --ground:#15191A; --surface:#1D2222; --raised:#252B2A;
+  --ink:#E2E7E1; --muted:#98A099; --faint:#78807A;
+  --rule:#333B38; --rule-soft:#2A3230;
+  --pen:#CDA87A; --rules:#9D8459; --on-pen:#181310; --sheet-ground:#0F1213;
   --shadow:0 1px 2px rgba(0,0,0,.5), 0 3px 12px rgba(0,0,0,.4);
   --shadow-lift:0 2px 8px rgba(0,0,0,.6), 0 14px 34px rgba(0,0,0,.5);
 }
@@ -76,65 +60,56 @@
 [hidden]{display:none!important}
 html{-webkit-text-size-adjust:100%}
 body{
-  margin:0;
-  min-height:100vh;
-  background:var(--ground);
-  color:var(--ink);
+  margin:0;min-height:100vh;
+  background:var(--ground);color:var(--ink);
   font:400 15px/1.5 var(--ui);
-  -webkit-text-size-adjust:100%;
 }
 :focus-visible{outline:2px solid var(--pen);outline-offset:2px;border-radius:3px}
 
-/* ---------- frame ---------- */
 .wrap{max-width:1380px;margin:0 auto;padding-inline:16px;padding-block:clamp(18px,3vw,30px) 48px}
 
 .masthead{
   display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
   gap:12px 24px;padding-bottom:14px;border-bottom:1px solid var(--rule);margin-bottom:20px;
 }
-.masthead h1{
-  font:600 clamp(25px,3.4vw,34px)/1.05 var(--display);
-  margin:0;letter-spacing:-.01em;text-wrap:balance;
-}
+.masthead h1{font:600 clamp(25px,3.4vw,34px)/1.05 var(--display);margin:0;letter-spacing:-.01em;text-wrap:balance}
 .masthead h1 em{font-style:italic;font-weight:400;color:var(--rules)}
-.tally{
-  font:500 12px/1.35 var(--data);color:var(--muted);
-  text-align:right;font-variant-numeric:tabular-nums;
-}
+.tally{font:500 12px/1.4 var(--data);color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
 .tally b{color:var(--ink);font-weight:500}
 
 .app{display:grid;grid-template-columns:1fr;gap:20px}
-@media (min-width:860px){
-  .app{grid-template-columns:302px minmax(0,1fr);gap:28px;align-items:start}
-}
+@media (min-width:860px){.app{grid-template-columns:318px minmax(0,1fr);gap:28px;align-items:start}}
 
 /* ---------- shelf ---------- */
-.shelf{display:grid;gap:14px;min-width:0}
+.shelf{display:grid;gap:12px;min-width:0}
 @media (max-width:859px){
   .shelf{
     max-height:44vh;overflow-y:auto;-webkit-overflow-scrolling:touch;
     padding:12px;border:1px solid var(--rule);border-radius:9px;background:var(--surface);
   }
   .shelf .finder input{background:var(--raised)}
-  .shelf .group > h2{position:sticky;top:-12px;background:var(--surface);padding-block:6px 3px;z-index:1}
+  .shelf .coll > h2{position:sticky;top:-12px;background:var(--surface);z-index:2}
 }
 @media (min-width:860px){
   .shelf{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;padding-right:4px}
+  .shelf .coll > h2{position:sticky;top:0;background:var(--ground);z-index:2}
 }
-.finder{position:relative;display:grid}
 .finder input{
-  width:100%;min-height:42px;padding:8px 12px;
-  border:1px solid var(--rule);border-radius:7px;
-  background:var(--surface);color:var(--ink);
-  font:400 14px/1.3 var(--ui);
+  width:100%;min-height:42px;padding:8px 12px;border:1px solid var(--rule);border-radius:7px;
+  background:var(--surface);color:var(--ink);font:400 14px/1.3 var(--ui);
 }
 .finder input::placeholder{color:var(--faint)}
 
-.group{display:grid;gap:5px}
-.group > h2{
-  font:500 10px/1 var(--data);letter-spacing:.14em;text-transform:uppercase;
-  color:var(--faint);margin:6px 0 3px;
+.coll{display:grid;gap:3px;margin-bottom:6px}
+.coll > h2{
+  font:600 12px/1.3 var(--ui);letter-spacing:.02em;color:var(--ink);
+  margin:10px 0 2px;padding-block:5px 4px;border-bottom:1px solid var(--rule-soft);
+  display:flex;align-items:baseline;gap:7px;
 }
+.coll > h2 .cnt{font:400 10.5px/1 var(--data);color:var(--faint);margin-left:auto}
+.coll > .cnote{margin:0 0 5px;font:400 11.5px/1.45 var(--ui);color:var(--faint)}
+.gh{font:500 10px/1 var(--data);letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:8px 0 2px}
+
 .work{
   display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:baseline;
   width:100%;text-align:left;cursor:pointer;
@@ -145,11 +120,9 @@ body{
 .work .t{font:500 14px/1.3 var(--ui);overflow-wrap:anywhere}
 .work .n{font:400 11px/1 var(--data);color:var(--faint);font-variant-numeric:tabular-nums;white-space:nowrap}
 .work .d{grid-column:1/-1;font:400 12px/1.4 var(--ui);color:var(--muted)}
-.work[aria-current="true"]{
-  background:var(--raised);border-color:var(--rule);
-  box-shadow:inset 3px 0 0 var(--pen);
-}
+.work[aria-current="true"]{background:var(--raised);border-color:var(--rule);box-shadow:inset 3px 0 0 var(--pen)}
 .work[aria-current="true"] .t{color:var(--pen)}
+.work.ext .n{color:var(--rules)}
 
 .escape{border-top:1px solid var(--rule-soft);padding-top:12px;display:grid;gap:7px}
 .escape summary{
@@ -169,15 +142,13 @@ body{
 /* ---------- contact sheet ---------- */
 .sheet{min-width:0;display:grid;gap:14px;align-content:start}
 .sheet-head{display:grid;gap:8px}
-.sheet-head .title{
-  font:600 clamp(18px,2.2vw,23px)/1.2 var(--display);margin:0;text-wrap:balance;
-}
+.sheet-head .title{font:600 clamp(18px,2.2vw,23px)/1.2 var(--display);margin:0;text-wrap:balance}
 .sheet-head .sub{margin:0;font:400 13.5px/1.5 var(--ui);color:var(--muted);max-width:62ch}
 .sheet-bar{
   display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;
   padding:9px 12px;border:1px solid var(--rule);border-radius:8px;background:var(--surface);
 }
-.sheet-bar .meta{font:400 11.5px/1.3 var(--data);color:var(--muted);font-variant-numeric:tabular-nums}
+.sheet-bar .meta{font:400 11.5px/1.4 var(--data);color:var(--muted);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
 .sheet-bar .spacer{flex:1 1 auto;min-width:0}
 .jump{display:flex;align-items:center;gap:6px}
 .jump label{font:500 11px/1 var(--data);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
@@ -187,30 +158,24 @@ body{
   font:500 13px/1 var(--data);font-variant-numeric:tabular-nums;
 }
 
-.grid{
-  display:grid;gap:12px;
-  grid-template-columns:repeat(auto-fill,minmax(104px,1fr));
-}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(104px,1fr))}
 @media (min-width:600px){.grid{grid-template-columns:repeat(auto-fill,minmax(126px,1fr))}}
-.leaf{
-  display:grid;gap:5px;padding:0;border:0;background:none;color:inherit;font:inherit;
-  cursor:pointer;text-align:center;
-}
+.leaf{display:grid;gap:5px;padding:0;border:0;background:none;color:inherit;font:inherit;cursor:pointer;text-align:center}
 .leaf .frame{
   background:var(--sheet-ground);border:1px solid var(--rule-soft);border-radius:3px;
-  aspect-ratio:4/3;overflow:hidden;display:grid;place-items:center;
-  box-shadow:var(--shadow);
+  aspect-ratio:4/3;overflow:hidden;display:grid;place-items:center;box-shadow:var(--shadow);
 }
 .leaf img{width:100%;height:100%;max-width:100%;object-fit:contain;display:block}
-.empty{
-  grid-column:1/-1;margin:0;padding:22px 16px;border:1px dashed var(--rule);border-radius:8px;
-  font:400 13.5px/1.6 var(--ui);color:var(--muted);text-align:center;
-}
 .leaf .cap{font:400 10.5px/1 var(--data);color:var(--faint);font-variant-numeric:tabular-nums}
 .leaf:hover .frame{box-shadow:var(--shadow-lift)}
 .leaf[aria-current="true"] .frame{border-color:var(--pen);box-shadow:0 0 0 2px var(--pen),var(--shadow-lift)}
 .leaf[aria-current="true"] .cap{color:var(--pen);font-weight:500}
 .leaf.gone{display:none}
+.note{
+  grid-column:1/-1;margin:0;padding:20px 16px;border:1px dashed var(--rule);border-radius:8px;
+  font:400 13.5px/1.6 var(--ui);color:var(--muted);text-align:center;
+}
+.note a{color:var(--rules)}
 
 /* ---------- page detail ---------- */
 .detail{
@@ -221,7 +186,6 @@ body{
   display:grid;place-items:end center;padding:16px;overflow-y:auto;
 }
 @media (min-width:860px){.detail{place-items:center}}
-.detail[hidden]{display:none!important}
 .panel{
   width:100%;max-width:760px;background:var(--surface);
   border:1px solid var(--rule);border-radius:12px;box-shadow:var(--shadow-lift);
@@ -229,7 +193,7 @@ body{
 }
 .panel-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
 .panel-top h3{margin:0;font:600 17px/1.25 var(--display)}
-.panel-top .where{margin:2px 0 0;font:400 11.5px/1.4 var(--data);color:var(--muted)}
+.panel-top .where{margin:2px 0 0;font:400 11.5px/1.45 var(--data);color:var(--muted)}
 .panel-top .where b{color:var(--pen);font-weight:500}
 .x{
   min-width:38px;min-height:38px;display:grid;place-items:center;flex:none;
@@ -237,11 +201,7 @@ body{
   font:400 17px/1 var(--ui);cursor:pointer;
 }
 .x:hover{color:var(--ink)}
-
-.plate{
-  background:var(--sheet-ground);border:1px solid var(--rule-soft);border-radius:5px;
-  overflow:hidden;display:grid;place-items:center;min-height:170px;
-}
+.plate{background:var(--sheet-ground);border:1px solid var(--rule-soft);border-radius:5px;overflow:hidden;display:grid;place-items:center;min-height:170px}
 .plate img{width:100%;max-width:100%;display:block}
 
 .controls{display:grid;gap:12px}
@@ -250,14 +210,12 @@ body{
 .seg{display:flex;flex-wrap:wrap;border:1px solid var(--rule);border-radius:7px;overflow:hidden;background:var(--raised);width:fit-content;max-width:100%}
 .seg label{display:block;cursor:pointer}
 .seg input{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
-.seg span{
-  display:flex;align-items:center;min-height:38px;padding:0 13px;
-  font:400 12.5px/1 var(--data);border-right:1px solid var(--rule);color:var(--muted);
-}
+.seg span{display:flex;align-items:center;min-height:38px;padding:0 13px;font:400 12.5px/1 var(--data);border-right:1px solid var(--rule);color:var(--muted)}
 .seg label:last-child span{border-right:0}
 .seg input:checked + span{background:var(--pen);color:var(--on-pen);font-weight:500}
 .seg input:focus-visible + span{outline:2px solid var(--pen);outline-offset:-3px}
 .crop{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+.crop[hidden]{display:none}
 .crop label{display:grid;gap:3px;font:500 10px/1 var(--data);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
 .crop input{
   min-height:38px;width:100%;padding:4px 7px;border:1px solid var(--rule);border-radius:6px;
@@ -265,13 +223,8 @@ body{
   font-variant-numeric:tabular-nums;text-align:center;
 }
 
-.out{
-  border-top:1px solid var(--rule-soft);padding-top:13px;display:grid;gap:11px;
-}
-.url{
-  margin:0;font:400 12.5px/1.6 var(--data);overflow-wrap:anywhere;word-break:break-all;
-  user-select:all;-webkit-user-select:all;color:var(--muted);
-}
+.out{border-top:1px solid var(--rule-soft);padding-top:13px;display:grid;gap:11px}
+.url{margin:0;font:400 12.5px/1.6 var(--data);overflow-wrap:anywhere;word-break:break-all;user-select:all;-webkit-user-select:all;color:var(--muted)}
 .url .hi{color:var(--pen);font-weight:500}
 .url .op{color:var(--rules)}
 .acts{display:flex;flex-wrap:wrap;gap:8px}
@@ -287,12 +240,12 @@ body{
 .side a{font:400 12px/1.6 var(--ui);color:var(--rules);overflow-wrap:anywhere}
 .tip{margin:0;font:400 12px/1.5 var(--ui);color:var(--faint);max-width:60ch}
 
-footer{
-  margin-top:34px;padding-top:16px;border-top:1px solid var(--rule);
-  display:grid;gap:7px;max-width:70ch;
-}
-footer p{margin:0;font:400 12.5px/1.6 var(--ui);color:var(--faint)}
+footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--rule);display:grid;gap:14px}
+footer h2{font:600 12px/1 var(--data);letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin:0}
+footer p{margin:0;font:400 12.5px/1.6 var(--ui);color:var(--faint);max-width:72ch}
 footer b{color:var(--muted);font-weight:500}
+footer ul{margin:0;padding-left:18px;display:grid;gap:4px}
+footer li{font:400 12.5px/1.55 var(--ui);color:var(--faint);max-width:72ch}
 code{font:400 12px var(--data);color:var(--rules)}
 
 @media (prefers-reduced-motion:no-preference){
@@ -301,24 +254,25 @@ code{font:400 12px var(--data);color:var(--rules)}
 </style>
 </head>
 <body>
+
 <div class="wrap">
   <header class="masthead">
     <h1>Brahms <em>in his own hand</em></h1>
-    <p class="tally"><b>21</b> manuscripts · <b>985</b> page images<br>Library of Congress · native resolution</p>
+    <p class="tally"><b>50</b> manuscripts · <b>1,542</b> page images<br>Washington · Berlin · Lübeck</p>
   </header>
 
   <div class="app">
     <aside class="shelf">
       <div class="finder">
-        <input id="find" type="search" placeholder="Filter by work or opus…" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Filter the shelf">
+        <input id="find" type="search" placeholder="Filter by work, opus or library…" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Filter the shelf">
       </div>
       <div id="shelfList"></div>
       <details class="escape">
-        <summary>Something else at LoC</summary>
+        <summary>Another Library of Congress item</summary>
         <div class="body">
           <input id="other" type="text" inputmode="url" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Item number or /resource/ URL">
           <input id="otherN" type="number" inputmode="numeric" min="1" max="2000" value="120" aria-label="Pages to try">
-          <p>A <code>/resource/</code> address carries the ID. A bare item number needs the API, which may be blocked from here — if it is, set a page count and missing pages just drop out of the sheet.</p>
+          <p>A <code>/resource/</code> address carries the ID on its own. A bare item number needs LoC's API — if that's blocked, set a page count and missing pages drop out of the sheet.</p>
         </div>
       </details>
     </aside>
@@ -341,9 +295,26 @@ code{font:400 12px var(--data);color:var(--rules)}
   </div>
 
   <footer>
-    <p><b>Saving on iPad:</b> open the image, then Share → Save to Files. Save to Photos re-encodes it and you lose the point of pulling a TIFF.</p>
-    <p><b>The mapping:</b> the <code>sp=</code> number in LoC's own viewer is the image number — <code>sp=19</code> is image <code>0019</code>. The manuscript's written page numbers are a separate sequence; for the Third Symphony image = written page + 2, verified against image 0020 carrying the hand-numbered 18. Other items haven't been checked.</p>
-    <p>Page counts and identifiers were read from the LoC API item by item, not inferred. The Violin Concerto's corrected solo part (Brahms and Joachim) is listed in the research guide but its API record 404s, so it isn't here.</p>
+    <div>
+      <h2>Using it</h2>
+      <p><b>Saving on iPad:</b> open the image, then Share → Save to Files. Save to Photos re-encodes it and you lose the point of pulling a TIFF.</p>
+      <p><b>Page numbers:</b> at the Library of Congress the <code>sp=</code> number in their viewer is the image number — <code>sp=19</code> is image <code>0019</code>. A manuscript's own written pagination is a separate sequence; for the Third Symphony image = written page + 2, checked against image 0020 carrying the hand-numbered 18. No other item here has been checked that way.</p>
+      <p><b>Rights:</b> Lübeck releases its images CC0. Berlin marks its scans Public Domain Mark 1.0. The Library of Congress items are public domain. All three permit the downloads this page builds.</p>
+    </div>
+    <div>
+      <h2>Known, and not online</h2>
+      <ul>
+        <li><b>Gesellschaft der Musikfreunde, Vienna</b> — 114 Brahms music autographs, UNESCO Memory of the World, including the German Requiem, the Double Concerto, and the sketches for a fifth symphony. Their entire public digital output is concert programmes; not one manuscript. The largest single gap in Brahms sources by a wide margin.</li>
+        <li><b>Symphony No. 4</b> — the autograph belongs to the Allgemeine Musikgesellschaft Zürich, 138 pages with Brahms's corrections and Simrock's engraving marks. Not digitized; the 1974 six-colour facsimile is still the only way to see it.</li>
+        <li><b>British Library</b> — four autographs (Piano Concerto No. 2 reduction, Zigeunerlieder op. 103, the canon op. 113/9, and the Rhapsody op. 119/4). Digitised, but the images have been offline since the 2023 cyber-attack.</li>
+        <li><b>Morgan Library</b> — nine Brahms records including the Symphony No. 1 autograph (movements 2–4; the first is lost) and the Hungarian Dances. Whether page images are viewable could not be settled from here — worth one look at <code>themorgan.org/music/manuscript/114285</code>.</li>
+        <li><b>Violin Concerto solo part</b>, corrected by Brahms and Joachim together — listed in LoC's research guide, but its API record 404s.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>How it was built</h2>
+      <p>Every identifier and page count here was read from the holding library's own API or IIIF manifest, one record at a time. Nothing was inferred from a neighbouring record's pattern. Where a library holds Brahms autographs but has not put images online, it is listed above rather than quietly omitted. LoC's own research guide lists the Op. 118 / Op. 119 intermezzi as catalogue-only; they are in fact digitized, and they are on this shelf.</p>
+    </div>
   </footer>
 </div>
 
@@ -411,7 +382,7 @@ code{font:400 12px var(--data);color:var(--rules)}
       <div class="side">
         <a id="dInfo" target="_blank" rel="noopener">info.json</a>
         <a id="dPdf" target="_blank" rel="noopener">whole item as PDF</a>
-        <a id="dViewer" target="_blank" rel="noopener">this page in LoC's viewer</a>
+        <a id="dViewer" target="_blank" rel="noopener">this page at the library</a>
       </div>
       <p class="tip" id="dTip"></p>
     </div>
@@ -420,56 +391,168 @@ code{font:400 12px var(--data);color:var(--rules)}
 
 <script>
 (function(){
-  var TILE = "https://tile.loc.gov/image-services/iiif/";
-  var STORE = "https://tile.loc.gov/storage-services/public/music/";
-
-  /* Identifiers and page counts read from loc.gov/item/<n>/?fo=json, one at a time.
-     offset: image number minus the manuscript's own written page number. Only set
-     where it has actually been checked against a numbered leaf. */
-  var WORKS = [
-    {g:"Orchestral & concerted", w:[
-      {item:"2008573409", id:"musihas-200152859", n:108, offset:2, t:"Symphony No. 3 in F, Op. 90", d:"Autograph full score. The Andante's string page is image 0019."},
-      {item:"2009545993", id:"musihas-200153237", n:110, t:"Violin Concerto in D, Op. 77", d:"Autograph full score, given to the Library by Fritz Kreisler."},
-      {item:"2008573410", id:"musihas-200153079", n:70,  t:"Symphony No. 3, Op. 90 — two pianos", d:"Brahms's own arrangement, in his hand."},
-      {item:"2008573407", id:"musihas-200153074", n:53,  t:"Symphony No. 1, Op. 68 — four hands", d:"Autograph arrangement for piano duet."},
-      {item:"68044593",   id:"musihas-200153054", n:64,  t:"Piano Concerto No. 1, Op. 15 — four hands", d:"The copy prepared for the publisher."},
-      {item:"68044592",   id:"musihas-200153055", n:28,  t:"Piano Concerto No. 1, Op. 15 — four hands", d:"A second four-hand autograph of the same concerto."}
-    ]},
-    {g:"Chamber", w:[
-      {item:"2008560635", id:"musihas-200153062", n:86, t:"Piano Quintet in F minor, Op. 34", d:"Autograph full score."},
-      {item:"2008560616", id:"musihas-200153056", n:76, t:"String Sextet No. 1 in B♭, Op. 18", d:"Score and sketches — the only sketch material on the shelf. He destroyed most of it."},
-      {item:"2008560636", id:"musihas-200153063", n:54, t:"String Sextet No. 2 in G, Op. 36", d:"Autograph arrangement."},
-      {item:"2008573427", id:"musihas-200153077", n:50, t:"Piano Trio No. 2 in C, Op. 87", d:"Autograph."},
-      {item:"2008560645", id:"musihas-200153067", n:40, t:"Horn Trio in E♭, Op. 40", d:"Ink with pencil over it, and pp. 9–10 in a copyist's hand — revision layers and a scribal hand on one stock."}
-    ]},
-    {g:"Piano", w:[
-      {item:"2008560632", id:"musihas-200153058", n:34, t:"Schumann Variations, Op. 23", d:"Piano four hands. Titled on the manuscript “für eine liebe Freundin”."},
-      {item:"2008560633", id:"musihas-200153059", n:30, t:"Handel Variations, Op. 24", d:"Autograph."}
-    ]},
-    {g:"Choral & song", w:[
-      {item:"2008560648", id:"musihas-200153070", n:58, t:"Ein deutsches Requiem, Op. 45", d:"Autograph arrangement for piano four hands."},
-      {item:"2009545994", id:"musihas-200217561", n:48, t:"Schicksalslied, Op. 54", d:"Chorus and orchestra."},
-      {item:"67058180",   id:"musihas-200153075", n:20, t:"Romanzen und Lieder, Op. 84", d:"Nos. 1, 2, 3 and 5."},
-      {item:"63035150",   id:"musihas-200153064", n:14, t:"Drei geistliche Chöre, Op. 37", d:"Women's voices, unaccompanied."},
-      {item:"2015563415", id:"musihas-200217563", n:8,  t:"Von ewiger Liebe, Op. 43 no. 1", d:"Eight leaves."},
-      {item:"2008561143", id:"musihas-200153928", n:6,  t:"Magyarisch, Op. 46 no. 2", d:"Six leaves."}
-    ]},
-    {g:"Cadenzas", w:[
-      {item:"ihas.200153134", id:"musihas-200153134", n:24, t:"Cadenzas — Bach and Mozart", d:"Bach BWV 1052; Mozart K. 453, K. 466, K. 491. Brahms's hand."},
-      {item:"2008561150", id:"musihas-200154555", n:4, t:"Cadenza, Mozart K. 466 (i)", d:"Clara Schumann's hand, drawing on Brahms's material — the one leaf here that isn't his."}
-    ]}
-  ];
-
-  var $ = function(id){ return document.getElementById(id); };
-  var cur = null;   /* current work */
-  var curN = 1;     /* current image number */
-  var dims = {};    /* id.NNNN -> "W × H" once info.json has answered */
+  var LOC_TILE  = "https://tile.loc.gov/image-services/iiif/";
+  var LOC_STORE = "https://tile.loc.gov/storage-services/public/music/";
+  var SBB       = "https://content.staatsbibliothek-berlin.de/dc/";
+  var BP        = "https://www.brahms-portal.de/";
 
   function pad(n){ return String(Math.max(1, n|0)).padStart(4,"0"); }
-  function base(w){ return w.base || ("public:music:" + w.id + ":" + w.id); }
-  function url(w, n, region, size, rot, fmt){
-    return TILE + base(w) + "." + pad(n) + "/" + region + "/" + size + "/" + rot + "/default." + fmt;
+
+  /* ---------------------------------------------------------------
+     One adapter per holding library. Each turns (work, image number)
+     into a IIIF service root; everything else is the standard 2.1
+     region / size / rotation / format tail.
+     --------------------------------------------------------------- */
+  var SRC = {
+    loc: {
+      lib:"Library of Congress",
+      root:function(w,n){ return LOC_TILE + (w.base || "public:music:"+w.id+":"+w.id) + "." + pad(n); },
+      thumb:"/full/pct:6.25/0/default.jpg",
+      prev:"/full/pct:12.5/0/default.jpg",
+      pdf:function(w){ return LOC_STORE + w.id + "/" + w.id + ".pdf"; },
+      viewer:function(w,n){ return "https://www.loc.gov/resource/music."+w.id+"/?sp="+n+"&st=image"; }
+    },
+    sbb: {
+      lib:"Staatsbibliothek zu Berlin",
+      root:function(w,n){ return SBB + w.id + "-" + pad(n); },
+      thumb:"/full/240,/0/default.jpg",
+      prev:"/full/900,/0/default.jpg",
+      pdf:null,
+      viewer:function(w){ return "https://digital.staatsbibliothek-berlin.de/werkansicht/?PPN=PPN"+w.id; }
+    },
+    bp: {
+      lib:"Brahms-Institut Lübeck",
+      /* Lübeck's images sit on digiCult under per-page derivate ids that
+         cannot be derived from the page number. The manifest is the only
+         source of truth, so it is fetched once per work. */
+      needsManifest:true,
+      root:function(w,n){ return w.services ? w.services[n-1] : null; },
+      thumb:"/full/240,/0/default.jpg",
+      prev:"/full/900,/0/default.jpg",
+      pdf:null,
+      viewer:function(w,n){ return BP + "objekt/" + w.id + "/" + n + "/"; }
+    }
+  };
+
+  function tail(region,size,rot,fmt){ return "/"+region+"/"+size+"/"+rot+"/default."+fmt; }
+  function imgUrl(w,n,region,size,rot,fmt){
+    var r = SRC[w.src].root(w,n);
+    return r ? r + tail(region,size,rot,fmt) : null;
   }
+
+  /* ---------------------------------------------------------------
+     The shelf. Every identifier and page count below was read from the
+     holding library's own API or IIIF manifest, record by record.
+     --------------------------------------------------------------- */
+  var COLLECTIONS = [
+    {
+      src:"loc", lib:"Library of Congress",
+      note:"Almost all of it the Gertrude Clarke Whittall Foundation collection.",
+      groups:[
+        {g:"Orchestral & concerted", w:[
+          {id:"musihas-200152859", n:108, offset:2, item:"2008573409", t:"Symphony No. 3 in F, Op. 90", d:"Autograph full score. The Andante's string page is image 0019."},
+          {id:"musihas-200153237", n:110, item:"2009545993", t:"Violin Concerto in D, Op. 77", d:"Autograph full score, given to the Library by Fritz Kreisler."},
+          {id:"musihas-200153079", n:70,  item:"2008573410", t:"Symphony No. 3, Op. 90 — two pianos", d:"Brahms's own arrangement, in his hand."},
+          {id:"musihas-200153074", n:53,  item:"2008573407", t:"Symphony No. 1, Op. 68 — four hands", d:"Autograph arrangement for piano duet."},
+          {id:"musihas-200153054", n:64,  item:"68044593",   t:"Piano Concerto No. 1, Op. 15 — four hands", d:"The copy prepared for the publisher."},
+          {id:"musihas-200153055", n:28,  item:"68044592",   t:"Piano Concerto No. 1, Op. 15 — four hands", d:"A second four-hand autograph of the same concerto."}
+        ]},
+        {g:"Chamber", w:[
+          {id:"musihas-200153062", n:86, item:"2008560635", t:"Piano Quintet in F minor, Op. 34", d:"Autograph full score."},
+          {id:"musihas-200153056", n:76, item:"2008560616", t:"String Sextet No. 1 in B♭, Op. 18", d:"Score and sketches — he destroyed most of his sketch material."},
+          {id:"musihas-200153063", n:54, item:"2008560636", t:"String Sextet No. 2 in G, Op. 36", d:"Autograph arrangement."},
+          {id:"musihas-200153077", n:50, item:"2008573427", t:"Piano Trio No. 2 in C, Op. 87", d:"Autograph."},
+          {id:"musihas-200153067", n:40, item:"2008560645", t:"Horn Trio in E♭, Op. 40", d:"Ink with pencil over it, and pp. 9–10 in a copyist's hand — revision layers and a scribal hand on one stock."}
+        ]},
+        {g:"Piano", w:[
+          {id:"musihas-200217559", n:16, item:"2003555637", t:"Intermezzi, Op. 118 no. 1 and Op. 119 no. 1", d:"Autograph. LoC's own research guide lists this as catalogue-only; it is digitized."},
+          {id:"musihas-200153058", n:34, item:"2008560632", t:"Schumann Variations, Op. 23", d:"Piano four hands, titled on the manuscript “für eine liebe Freundin”."},
+          {id:"musihas-200153059", n:30, item:"2008560633", t:"Handel Variations, Op. 24", d:"Autograph."}
+        ]},
+        {g:"Choral & song", w:[
+          {id:"musihas-200153070", n:58, item:"2008560648", t:"Ein deutsches Requiem, Op. 45", d:"Autograph arrangement for piano four hands."},
+          {id:"musihas-200217561", n:48, item:"2009545994", t:"Schicksalslied, Op. 54", d:"Chorus and orchestra."},
+          {id:"musihas-200153075", n:20, item:"67058180",   t:"Romanzen und Lieder, Op. 84", d:"Nos. 1, 2, 3 and 5."},
+          {id:"musihas-200153064", n:14, item:"63035150",   t:"Drei geistliche Chöre, Op. 37", d:"Women's voices, unaccompanied."},
+          {id:"musihas-200217563", n:8,  item:"2015563415", t:"Von ewiger Liebe, Op. 43 no. 1", d:"Eight leaves."},
+          {id:"musihas-200153928", n:6,  item:"2008561143", t:"Magyarisch, Op. 46 no. 2", d:"Six leaves."}
+        ]},
+        {g:"Cadenzas", w:[
+          {id:"musihas-200153134", n:24, item:"ihas.200153134", t:"Cadenzas — Bach and Mozart", d:"Bach BWV 1052; Mozart K. 453, K. 466, K. 491. Brahms's hand."},
+          {id:"musihas-200154555", n:4,  item:"2008561150", t:"Cadenza, Mozart K. 466 (i)", d:"Clara Schumann's hand, drawing on Brahms's material — not his."}
+        ]}
+      ]
+    },
+    {
+      src:"sbb", lib:"Staatsbibliothek zu Berlin",
+      note:"Public Domain Mark. Identifiers are PPNs; images run to 4000 px and beyond.",
+      groups:[
+        {g:"", w:[
+          {id:"66845539X", n:213, ppn:"PPN66845539X", t:"Piano Concerto No. 1 in D minor, Op. 15", d:"Autograph full score, 204 pages, 1857. Mus.ms.autogr. Brahms, J. 2 — the largest Brahms autograph online anywhere."},
+          {id:"655181407", n:66,  ppn:"PPN655181407", t:"Academic Festival Overture, Op. 80", d:"Autograph full score, 52 pages. Mus.ms.autogr. Brahms, J. 16."},
+          {id:"665783116", n:59,  ppn:"PPN665783116", t:"F.A.E. Sonata — Brahms's Scherzo, WoO 2", d:"The composite autograph by Schumann, Dietrich and Brahms for Joachim, 1853. Mus.ms.autogr. Schumann, R. 26."},
+          {id:"78394571X", n:19,  ppn:"PPN78394571X", t:"Three pieces from Op. 118", d:"Intermezzo in A (118/2), Ballade in G minor (118/3), Intermezzo in E♭ minor (118/6). Autograph, 1893. Mus.ms.autogr. Brahms, J. 12."},
+          {id:"672217023", n:13,  ppn:"PPN672217023", t:"Scherzo from Schumann's Quintet, Op. 44 — arranged", d:"Brahms's piano arrangement, 1854, inscribed “für Frau Schumann allein”. Mus.ms.autogr. Brahms, J. 7."},
+          {id:"672224895", n:7,   ppn:"PPN672224895", t:"Wir wandelten, Op. 96 no. 2", d:"Autograph score, 4 pages, 1884."},
+          {id:"67107413X", n:5,   ppn:"PPN67107413X", t:"Symphony No. 4 — album leaf", d:"The opening bars in piano reduction, one leaf. The nearest thing to the Fourth's autograph that is online at all."}
+        ]}
+      ]
+    },
+    {
+      src:"bp", lib:"Brahms-Institut Lübeck",
+      note:"The Brahms-Portal, online since August 2025. Images CC0. Loads a page list from the portal when opened.",
+      groups:[
+        {g:"Instrumental & choral", w:[
+          {id:"dc00008049", n:44, t:"Serenade No. 2 in A, Op. 16", d:"Copyist's engraver's copy carrying Brahms's autograph title page and his own corrections throughout."},
+          {id:"dc00008034", n:42, t:"Piano Quartet No. 2 in A, Op. 26", d:"Working manuscript, heavily corrected."},
+          {id:"dc00008037", n:12, t:"Es ist das Heil uns kommen her, Op. 29 no. 1", d:"Motet. Autograph fair copy."},
+          {id:"dc00008028", n:10, t:"Seven Songs for mixed chorus, Op. 62 nos. 1–4", d:"Autograph fair copy."},
+          {id:"dc00008048", n:6,  t:"Ein deutsches Requiem, Op. 45 — fifth movement", d:"“Ihr habt nun Traurigkeit”, first autograph engraver's copy of the piano score."},
+          {id:"dc00008031", n:2,  t:"O bone Jesu, Op. 37 no. 1", d:"Alto I chorus part, autograph fair copy."},
+          {id:"dc00008032", n:2,  t:"Adoramus, Op. 37 no. 2", d:"Alto I chorus part, autograph fair copy."},
+          {id:"dc00008029", n:2,  t:"Ungarische Weise", d:"Sketch leaf in short score."}
+        ]},
+        {g:"Songs", w:[
+          {id:"dc00008036", n:6, t:"Trennung, Op. 97 no. 6", d:"Album leaf, autograph fair copy, with its envelope."},
+          {id:"dc00008025", n:4, t:"Liebesglut, Op. 47 no. 2", d:"Working manuscript."},
+          {id:"dc00008026", n:4, t:"Der Überläufer, Op. 48 no. 2", d:"Autograph fair copy."},
+          {id:"dc00008033", n:4, t:"Ein Sonett, Op. 14 no. 4", d:"Autograph fair copy."},
+          {id:"dc00008035", n:4, t:"Am Strande, Op. 66 no. 3", d:"Autograph fair copy."},
+          {id:"dc00009611", n:2, t:"Feldeinsamkeit, Op. 86 no. 2", d:"Working manuscript."}
+        ]},
+        {g:"Canons & album leaves", w:[
+          {id:"dc00008023", n:2, t:"Töne, lindernder Klang, WoO 28", d:"Canon, autograph fair copy."},
+          {id:"dc00008024", n:2, t:"Töne, lindernder Klang, WoO 28 — first version", d:"The earlier autograph of the same canon."},
+          {id:"dc00008027", n:2, t:"Violin Sonata No. 1, Op. 78 — Adagio espressivo", d:"Album leaf for Clara Schumann, with a letter on the reverse."},
+          {id:"dc00002093", n:3, t:"Album leaf", d:"For an unidentified recipient."},
+          {id:"dc00002018", n:2, t:"Album leaf for Amalie Joachim", d:"Musical album leaf."},
+          {id:"dc00002016", n:2, t:"Album leaf — Allegro", d:"Musical album leaf."},
+          {id:"dc00002017", n:2, t:"Album leaf with Johann Strauss", d:"The Kaiserwalzer melody in Strauss's hand with Brahms's addition, for Countess Lucietta Wilczek."}
+        ]}
+      ]
+    }
+  ];
+
+  /* Viewer-only: real Brahms material with page images, but behind a viewer
+     whose image URLs can't be rebuilt here. Opens at the holding library. */
+  var EXTERNAL = {
+    lib:"Juilliard Manuscript Collection",
+    note:"Opens in Juilliard's own viewer — its image names aren't reconstructable.",
+    w:[
+      {t:"Deutsche Volkslieder, WoO 32 — sketches", d:"Autograph working manuscript: drafts of the piano accompaniments to five songs.", u:"https://juilliardmanuscriptcollection.org/phpviewer/index.php?path=BRAH_DEVO"},
+      {t:"Im Garten am Seegestade, Op. 70 no. 1", d:"Holograph, signed, inscribed “Wien Febr. 77”.", u:"https://juilliardmanuscriptcollection.org/phpviewer/index.php?path=BRAH_GE70"},
+      {t:"Sehnsucht, Op. 49 no. 3", d:"Holograph, signed. From Simrock's own collection.", u:"https://juilliardmanuscriptcollection.org/phpviewer/index.php?path=BRAH_LI49"},
+      {t:"Sechs Klavierstücke, Op. 118", d:"Simrock engraver's copy in Kupfer's hand, with Brahms's autograph title page and revisions in black, blue and green crayon.", u:"https://juilliardmanuscriptcollection.org/phpviewer/index.php?path=BRAH_K118"},
+      {t:"Vier Klavierstücke, Op. 119", d:"The companion engraver's copy, sharing the same autograph title page.", u:"https://juilliardmanuscriptcollection.org/phpviewer/index.php?path=BRAH_K119"},
+      {t:"Symphony No. 2, Op. 73 — first movement", d:"Hlavaczek's copy with Brahms's autograph title and extensive annotation.", u:"https://juilliardmanuscriptcollection.org/phpviewer/index.php?path=BRAH_SYM2"},
+      {t:"Double Concerto, Op. 102", d:"Kupfer's copy, Thun 1888, revised by Brahms, with the solo violin altered in Joachim's hand.", u:"https://juilliardmanuscriptcollection.org/phpviewer/index.php?path=BRAH_DOCO"}
+    ]
+  };
+
+  var $ = function(id){ return document.getElementById(id); };
+  var cur = null, curN = 1, dims = {}, token = 0;
+  var tally = {ok:0, bad:0, warned:false};
+
   function radio(name){ var el = document.querySelector('input[name="'+name+'"]:checked'); return el ? el.value : null; }
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){
     return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
@@ -477,40 +560,83 @@ code{font:400 12px var(--data);color:var(--rules)}
   function recall(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
 
   /* ---------- shelf ---------- */
+  var INDEX = {};
   function buildShelf(){
     var host = $("shelfList");
     host.innerHTML = "";
-    WORKS.forEach(function(grp){
-      var sec = document.createElement("div");
-      sec.className = "group";
+    COLLECTIONS.forEach(function(c){
+      var total = 0, count = 0;
+      c.groups.forEach(function(g){ g.w.forEach(function(w){
+        w.src = c.src; w.lib = c.lib; INDEX[w.id] = w; total += w.n; count++;
+      }); });
+
+      var sec = document.createElement("section");
+      sec.className = "coll";
       var h = document.createElement("h2");
-      h.textContent = grp.g;
+      h.innerHTML = esc(c.lib) + '<span class="cnt">' + count + " · " + total.toLocaleString() + " pp</span>";
       sec.appendChild(h);
-      grp.w.forEach(function(w){
-        var b = document.createElement("button");
-        b.type = "button";
-        b.className = "work";
-        b.dataset.item = w.item;
-        b.dataset.hay = (w.t + " " + w.d + " " + w.item).toLowerCase();
-        b.innerHTML = '<span class="t">' + esc(w.t) + '</span>' +
-                      '<span class="n">' + w.n + ' pp</span>' +
-                      '<span class="d">' + esc(w.d) + '</span>';
-        b.addEventListener("click", function(){ openWork(w, 1); });
-        sec.appendChild(b);
+      var note = document.createElement("p");
+      note.className = "cnote";
+      note.textContent = c.note;
+      sec.appendChild(note);
+
+      c.groups.forEach(function(g){
+        if(g.g){
+          var gh = document.createElement("p");
+          gh.className = "gh";
+          gh.textContent = g.g;
+          sec.appendChild(gh);
+        }
+        g.w.forEach(function(w){ sec.appendChild(row(w)); });
       });
       host.appendChild(sec);
     });
+
+    /* viewer-only holdings */
+    var sec = document.createElement("section");
+    sec.className = "coll";
+    var h = document.createElement("h2");
+    h.innerHTML = esc(EXTERNAL.lib) + '<span class="cnt">' + EXTERNAL.w.length + " · link</span>";
+    sec.appendChild(h);
+    var note = document.createElement("p");
+    note.className = "cnote";
+    note.textContent = EXTERNAL.note;
+    sec.appendChild(note);
+    EXTERNAL.w.forEach(function(x){
+      var a = document.createElement("a");
+      a.className = "work ext";
+      a.href = x.u; a.target = "_blank"; a.rel = "noopener";
+      a.dataset.hay = (x.t + " " + x.d + " juilliard").toLowerCase();
+      a.innerHTML = '<span class="t">' + esc(x.t) + '</span><span class="n">open ↗</span>' +
+                    '<span class="d">' + esc(x.d) + '</span>';
+      sec.appendChild(a);
+    });
+    host.appendChild(sec);
+  }
+
+  function row(w){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "work";
+    b.dataset.wid = w.id;
+    b.dataset.hay = (w.t + " " + w.d + " " + w.lib + " " + (w.item||"") + " " + w.id).toLowerCase();
+    b.innerHTML = '<span class="t">' + esc(w.t) + '</span>' +
+                  '<span class="n">' + w.n + ' pp</span>' +
+                  '<span class="d">' + esc(w.d) + '</span>';
+    b.addEventListener("click", function(){ openWork(w, 1); });
+    return b;
   }
 
   function filterShelf(q){
     q = (q||"").trim().toLowerCase();
-    document.querySelectorAll(".group").forEach(function(sec){
+    document.querySelectorAll(".coll").forEach(function(sec){
       var any = false;
       sec.querySelectorAll(".work").forEach(function(b){
         var hit = !q || b.dataset.hay.indexOf(q) !== -1;
         b.hidden = !hit;
         if(hit) any = true;
       });
+      sec.querySelectorAll(".gh").forEach(function(g){ g.hidden = !!q; });
       sec.hidden = !any;
     });
   }
@@ -518,13 +644,14 @@ code{font:400 12px var(--data);color:var(--rules)}
   /* ---------- contact sheet ---------- */
   function openWork(w, startAt){
     cur = w;
-    remember("brahms-shelf-work", w.item);
+    var mine = ++token;
+    remember("brahms-shelf-work", w.id);
     document.querySelectorAll(".work").forEach(function(b){
-      b.setAttribute("aria-current", b.dataset.item === w.item ? "true" : "false");
+      b.setAttribute("aria-current", b.dataset.wid === w.id ? "true" : "false");
     });
     $("wTitle").textContent = w.t;
     $("wSub").textContent = w.d;
-    $("wMeta").textContent = w.n + " images · " + w.id + " · item " + w.item;
+    $("wMeta").textContent = w.n + " images · " + w.lib + " · " + (w.ppn || w.id) + (w.item ? " · item " + w.item : "");
     var jt = $("jumpTo");
     jt.max = w.n;
     jt.value = Math.min(startAt || 1, w.n);
@@ -532,25 +659,56 @@ code{font:400 12px var(--data);color:var(--rules)}
     var grid = $("grid");
     grid.innerHTML = "";
     tally = {ok:0, bad:0, warned:false};
-    var frag = document.createDocumentFragment();
-    for(var i = 1; i <= w.n; i++){
-      frag.appendChild(leaf(w, i));
+
+    if(SRC[w.src].needsManifest && !w.services){
+      grid.innerHTML = '<p class="note">Asking Lübeck for this manuscript’s page list…</p>';
+      loadManifest(w, function(ok){
+        if(mine !== token) return;
+        if(ok) paintGrid(w);
+        else grid.innerHTML = '<p class="note">Couldn’t read the page list from brahms-portal.de. Its images sit on a separate server under per-page identifiers, so they can’t be built without it. <a href="' + BP + "objekt/" + w.id + '/" target="_blank" rel="noopener">Open this manuscript at the portal</a> instead.</p>';
+      });
+      return;
     }
+    paintGrid(w);
+  }
+
+  function paintGrid(w){
+    var grid = $("grid");
+    grid.innerHTML = "";
+    var frag = document.createDocumentFragment();
+    for(var i = 1; i <= w.n; i++) frag.appendChild(leaf(w, i));
     grid.appendChild(frag);
     markLeaf(null);
   }
 
-  /* If nothing at all loads, say so rather than showing a blank sheet — that
-     usually means no connection, not that the pages are missing. */
-  var tally = {ok:0, bad:0, warned:false};
-  function score(good){
+  function loadManifest(w, done){
+    fetch(BP + "api/v1/records/" + w.id + "/manifest/")
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        var cv = j && j.sequences && j.sequences[0] && j.sequences[0].canvases;
+        if(!cv || !cv.length) throw new Error("no canvases");
+        w.services = cv.map(function(c){
+          var im = c.images && c.images[0] && c.images[0].resource;
+          return im && im.service && im.service["@id"] ? im.service["@id"] : null;
+        }).filter(Boolean);
+        if(!w.services.length) throw new Error("no services");
+        w.n = w.services.length;
+        done(true);
+      })
+      .catch(function(){ done(false); });
+  }
+
+  /* If nothing at all loads, say so at the TOP rather than showing a blank sheet. */
+  function score(good, tok){
+    if(tok !== token) return;          /* a stale sheet's images finishing late */
     good ? tally.ok++ : tally.bad++;
     if(tally.warned || tally.ok > 0 || tally.bad < 8) return;
     tally.warned = true;
     var p = document.createElement("p");
-    p.className = "empty";
-    p.textContent = "No page images are loading — tile.loc.gov can't be reached. Check the connection. (If this page is running inside a sandbox that blocks outside images, it will never load them; use the hosted copy.)";
-    var g = $("grid"); g.insertBefore(p, g.firstChild);
+    p.className = "note";
+    p.textContent = "No page images are loading — the library's image server can't be reached from here. Check the connection.";
+    var g = $("grid");
+    g.insertBefore(p, g.firstChild);
   }
 
   function leaf(w, i){
@@ -558,18 +716,19 @@ code{font:400 12px var(--data);color:var(--rules)}
     b.type = "button";
     b.className = "leaf";
     b.dataset.n = i;
+    var myTok = token;
+    var src = SRC[w.src].root(w,i);
     var img = new Image();
     img.loading = "lazy";
     img.decoding = "async";
     img.alt = "Image " + pad(i);
-    img.src = url(w, i, "full", "pct:6.25", 0, "jpg");
-    img.addEventListener("load", function(){ score(true); });
+    if(src) img.src = src + SRC[w.src].thumb;
+    img.addEventListener("load", function(){ score(true, myTok); });
     img.addEventListener("error", function(){
-      /* Only drop the slot where the count was a guess. For the shelf the counts
-         came from the API, so a failure is a network problem, not a missing page —
-         keep the frame so the sheet doesn't quietly reflow around a gap. */
+      /* Only drop the slot where the count was a guess. Elsewhere the counts
+         came from the library's API, so a failure is a network problem. */
       if(w.guess) b.classList.add("gone");
-      score(false);
+      score(false, myTok);
     });
     var fr = document.createElement("span");
     fr.className = "frame";
@@ -577,8 +736,7 @@ code{font:400 12px var(--data);color:var(--rules)}
     var cap = document.createElement("span");
     cap.className = "cap";
     cap.textContent = pad(i);
-    b.appendChild(fr);
-    b.appendChild(cap);
+    b.appendChild(fr); b.appendChild(cap);
     b.addEventListener("click", function(){ openPage(i); });
     return b;
   }
@@ -592,13 +750,16 @@ code{font:400 12px var(--data);color:var(--rules)}
   /* ---------- page detail ---------- */
   function openPage(n){
     if(!cur) return;
+    var a = SRC[cur.src], root = a.root(cur, n);
+    if(!root) return;
     curN = n;
     markLeaf(n);
     $("dTitle").textContent = cur.t;
-    $("dPreview").src = url(cur, n, "full", "pct:12.5", 0, "jpg");
+    $("dPreview").src = root + a.prev;
     $("dPreview").alt = cur.t + ", image " + pad(n);
-    $("dViewer").href = "https://www.loc.gov/resource/music." + cur.id + "/?sp=" + n + "&st=image";
-    $("dPdf").href = STORE + cur.id + "/" + cur.id + ".pdf";
+    $("dViewer").href = a.viewer(cur, n);
+    if(a.pdf){ $("dPdf").href = a.pdf(cur); $("dPdf").hidden = false; }
+    else { $("dPdf").hidden = true; }
     $("detail").hidden = false;
     $("dClose").focus();
     paint();
@@ -606,45 +767,44 @@ code{font:400 12px var(--data);color:var(--rules)}
   }
 
   function measure(n){
-    var key = cur.id + "." + pad(n);
+    var key = cur.src + ":" + cur.id + "." + pad(n);
     if(dims[key]){ paint(); return; }
-    fetch(TILE + base(cur) + "." + pad(n) + "/info.json")
+    var root = SRC[cur.src].root(cur, n);
+    if(!root) return;
+    fetch(root + "/info.json")
       .then(function(r){ return r.json(); })
       .then(function(j){
         if(j && j.width){ dims[key] = j.width + " × " + j.height; if(curN === n) paint(); }
       })
-      .catch(function(){ /* offline, or the endpoint declined — the link still works */ });
+      .catch(function(){ /* the link still works even if this doesn't */ });
   }
 
   function paint(){
     if(!cur) return;
-    var n = curN, fmt = radio("fmt"), size = radio("size"), rot = radio("rot");
-    var reg = radio("reg");
+    var n = curN, fmt = radio("fmt"), size = radio("size"), rot = radio("rot"), reg = radio("reg");
     var region = reg === "crop"
       ? [$("cx").value, $("cy").value, $("cw").value, $("ch").value]
           .map(function(v){ return Math.max(0, parseInt(v,10) || 0); }).join(",")
       : reg;
-    var u = url(cur, n, region, size, rot, fmt);
+    var u = imgUrl(cur, n, region, size, rot, fmt);
+    if(!u) return;
 
-    var where = "image <b>" + pad(n) + "</b> of " + cur.n;
+    var where = "image <b>" + pad(n) + "</b> of " + cur.n + " · " + cur.lib;
     if(cur.offset && n > cur.offset) where += " · written p. " + (n - cur.offset);
-    var key = cur.id + "." + pad(n);
+    var key = cur.src + ":" + cur.id + "." + pad(n);
     if(dims[key]) where += " · " + dims[key] + " px";
     $("dWhere").innerHTML = where;
 
-    var tail = "/" + region + "/" + size + "/" + rot + "/default." + fmt;
-    $("dUrl").innerHTML =
-      esc(TILE) + esc(base(cur)) + '.<span class="hi">' + pad(n) + '</span>' +
-      '<span class="op">' + esc(tail) + "</span>";
-
+    var root = SRC[cur.src].root(cur, n), t = tail(region,size,rot,fmt);
+    $("dUrl").innerHTML = '<span class="hi">' + esc(root) + '</span><span class="op">' + esc(t) + "</span>";
     $("dOpen").href = u;
-    $("dInfo").href = TILE + base(cur) + "." + pad(n) + "/info.json";
+    $("dInfo").href = root + "/info.json";
     $("dCopy").dataset.url = u;
 
     $("dTip").textContent = fmt === "tif"
       ? "Lossless, and large — tens of megabytes at native size. Worth it for anything you'll measure or dewarp, not for reading."
       : (size === "full"
-          ? "Native resolution. The JPEG LoC serves is compressed; switch to tif if the page is going to be analysed rather than read."
+          ? "Native resolution. The JPEG is compressed; switch to tif if the page is going to be analysed rather than read."
           : "A resampled derivative. Switch to native for source work.");
   }
 
@@ -653,7 +813,7 @@ code{font:400 12px var(--data);color:var(--rules)}
     $("dPreview").removeAttribute("src");
   }
 
-  /* ---------- something else at LoC ---------- */
+  /* ---------- another LoC item ---------- */
   function tryOther(){
     var s = $("other").value.trim();
     if(!s) return;
@@ -663,9 +823,9 @@ code{font:400 12px var(--data);color:var(--rules)}
       var id = m[2].replace(/\.0$/, "");
       var sp = (s.match(/[?&]sp=(\d+)/) || [])[1];
       openWork({
-        item:"—", id:id, n:count, guess:true, t:"Item " + id,
+        src:"loc", lib:"Library of Congress", id:id, n:count, guess:true, t:"Item " + id,
         base:"public:" + m[1] + ":" + id + ":" + id,
-        d:"Pasted from a viewer address. Page count is a guess — images that don't exist drop out of the sheet."
+        d:"Pasted from a viewer address. The page count is a guess — images that don't exist drop out of the sheet."
       }, sp ? parseInt(sp,10) : 1);
       return;
     }
@@ -679,10 +839,9 @@ code{font:400 12px var(--data);color:var(--rules)}
         if(!hit) throw new Error("no images");
         var parts = decodeURIComponent(hit[1]).split(":");
         var all = txt.match(/image-services\/iiif\/[^"]*?\.(\d{4})\//g) || [];
-        var max = all.reduce(function(a, u){
-          var d = parseInt(u.slice(-5, -1), 10); return d > a ? d : a; }, 0);
+        var max = all.reduce(function(a,u){ var d = parseInt(u.slice(-5,-1),10); return d > a ? d : a; }, 0);
         openWork({
-          item:num, id:parts[parts.length-1], n:max || count,
+          src:"loc", lib:"Library of Congress", id:parts[parts.length-1], n:max || count,
           base:decodeURIComponent(hit[1]),
           t:(j.item && j.item.title) || ("Item " + num),
           d:"Resolved live from the LoC API."
@@ -710,9 +869,8 @@ code{font:400 12px var(--data);color:var(--rules)}
       setTimeout(function(){ $("dCopy").textContent = "Copy link"; }, 2400);
     };
     try{
-      if(navigator.clipboard && navigator.clipboard.writeText){
-        navigator.clipboard.writeText(u).then(done, manual);
-      } else { manual(); }
+      if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(u).then(done, manual);
+      else manual();
     }catch(e){ manual(); }
   }
 
@@ -720,7 +878,7 @@ code{font:400 12px var(--data);color:var(--rules)}
   buildShelf();
   $("find").addEventListener("input", function(){ filterShelf(this.value); });
   $("jumpTo").addEventListener("change", function(){
-    var n = Math.max(1, Math.min(cur ? cur.n : 1, parseInt(this.value, 10) || 1));
+    var n = Math.max(1, Math.min(cur ? cur.n : 1, parseInt(this.value,10) || 1));
     this.value = n;
     openPage(n);
     var el = document.querySelector('.leaf[data-n="' + n + '"]');
@@ -736,8 +894,7 @@ code{font:400 12px var(--data);color:var(--rules)}
   });
   document.querySelectorAll('.detail input[type=radio]').forEach(function(r){
     r.addEventListener("change", function(){
-      var crop = radio("reg") === "crop";
-      $("cropBox").hidden = !crop;
+      $("cropBox").hidden = radio("reg") !== "crop";
       paint();
     });
   });
@@ -746,11 +903,9 @@ code{font:400 12px var(--data);color:var(--rules)}
   $("other").addEventListener("change", tryOther);
   $("otherN").addEventListener("change", function(){ if($("other").value.trim()) tryOther(); });
 
-  /* open on the plate the kit was built from, or wherever he was last */
+  /* open where he left off, or on the plate the notation kit came from */
   var last = recall("brahms-shelf-work");
-  var pick = null;
-  WORKS.forEach(function(g){ g.w.forEach(function(w){ if(w.item === last) pick = w; }); });
-  openWork(pick || WORKS[0].w[0], 19);
+  openWork(INDEX[last] || INDEX["musihas-200152859"], last ? 1 : 19);
 })();
 </script>
 </body>
