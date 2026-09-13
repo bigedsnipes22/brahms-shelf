@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#E3E7E4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15191A" media="(prefers-color-scheme: dark)">
+<meta name="description" content="Every digitized Brahms autograph at the Library of Congress as a contact sheet, going straight to the native-resolution file.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23463423'/%3E%3Cg stroke='%23F6F3EC' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath d='M5 9h22M5 13h22M5 17h22M5 21h22M5 25h22'/%3E%3C/g%3E%3Cellipse cx='12' cy='21' rx='4' ry='3' fill='%23F6F3EC' transform='rotate(-18 12 21)'/%3E%3Cpath d='M15.6 20V8.5' stroke='%23F6F3EC' stroke-width='1.8'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23463423'/%3E%3Cg stroke='%23F6F3EC' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath d='M5 9h22M5 13h22M5 17h22M5 21h22M5 25h22'/%3E%3C/g%3E%3Cellipse cx='12' cy='21' rx='4' ry='3' fill='%23F6F3EC' transform='rotate(-18 12 21)'/%3E%3Cpath d='M15.6 20V8.5' stroke='%23F6F3EC' stroke-width='1.8'/%3E%3C/svg%3E">
+<title>Brahms Autograph Shelf</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Spectral:ital,wght@0,400;0,600;1,400&family=Spline+Sans+Mono:wght@400;500&display=swap">
+
+<style>
+:root{
+  /* cool slate chrome, so the warm scans read as objects on a table */
+  --ground:#E3E7E4;
+  --surface:#F1F4F0;
+  --raised:#FAFBF8;
+  --ink:#1F221E;
+  --muted:#5C635C;
+  --faint:#868D86;
+  --rule:#C4CBC3;
+  --rule-soft:#D6DCD5;
+  /* sampled off the plate: Brahms's pen, and the engraved staff rules */
+  --pen:#463423;
+  --rules:#66563A;
+  --on-pen:#F6F3EC;
+  --sheet-ground:#D2D8D1;
+  --shadow:0 1px 2px rgba(31,34,30,.09), 0 3px 10px rgba(31,34,30,.07);
+  --shadow-lift:0 2px 6px rgba(31,34,30,.14), 0 12px 30px rgba(31,34,30,.13);
+
+  --display:"Spectral",Georgia,"Times New Roman",serif;
+  --ui:"Archivo",-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --data:"Spline Sans Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#15191A;
+    --surface:#1D2222;
+    --raised:#252B2A;
+    --ink:#E2E7E1;
+    --muted:#98A099;
+    --faint:#78807A;
+    --rule:#333B38;
+    --rule-soft:#2A3230;
+    --pen:#CDA87A;
+    --rules:#9D8459;
+    --on-pen:#181310;
+    --sheet-ground:#0F1213;
+    --shadow:0 1px 2px rgba(0,0,0,.5), 0 3px 12px rgba(0,0,0,.4);
+    --shadow-lift:0 2px 8px rgba(0,0,0,.6), 0 14px 34px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#15191A;
+  --surface:#1D2222;
+  --raised:#252B2A;
+  --ink:#E2E7E1;
+  --muted:#98A099;
+  --faint:#78807A;
+  --rule:#333B38;
+  --rule-soft:#2A3230;
+  --pen:#CDA87A;
+  --rules:#9D8459;
+  --on-pen:#181310;
+  --sheet-ground:#0F1213;
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 3px 12px rgba(0,0,0,.4);
+  --shadow-lift:0 2px 8px rgba(0,0,0,.6), 0 14px 34px rgba(0,0,0,.5);
+}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  min-height:100vh;
+  background:var(--ground);
+  color:var(--ink);
+  font:400 15px/1.5 var(--ui);
+  -webkit-text-size-adjust:100%;
+}
+:focus-visible{outline:2px solid var(--pen);outline-offset:2px;border-radius:3px}
+
+/* ---------- frame ---------- */
+.wrap{max-width:1380px;margin:0 auto;padding-inline:16px;padding-block:clamp(18px,3vw,30px) 48px}
+
+.masthead{
+  display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
+  gap:12px 24px;padding-bottom:14px;border-bottom:1px solid var(--rule);margin-bottom:20px;
+}
+.masthead h1{
+  font:600 clamp(25px,3.4vw,34px)/1.05 var(--display);
+  margin:0;letter-spacing:-.01em;text-wrap:balance;
+}
+.masthead h1 em{font-style:italic;font-weight:400;color:var(--rules)}
+.tally{
+  font:500 12px/1.35 var(--data);color:var(--muted);
+  text-align:right;font-variant-numeric:tabular-nums;
+}
+.tally b{color:var(--ink);font-weight:500}
+
+.app{display:grid;grid-template-columns:1fr;gap:20px}
+@media (min-width:860px){
+  .app{grid-template-columns:302px minmax(0,1fr);gap:28px;align-items:start}
+}
+
+/* ---------- shelf ---------- */
+.shelf{display:grid;gap:14px;min-width:0}
+@media (max-width:859px){
+  .shelf{
+    max-height:44vh;overflow-y:auto;-webkit-overflow-scrolling:touch;
+    padding:12px;border:1px solid var(--rule);border-radius:9px;background:var(--surface);
+  }
+  .shelf .finder input{background:var(--raised)}
+  .shelf .group > h2{position:sticky;top:-12px;background:var(--surface);padding-block:6px 3px;z-index:1}
+}
+@media (min-width:860px){
+  .shelf{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;padding-right:4px}
+}
+.finder{position:relative;display:grid}
+.finder input{
+  width:100%;min-height:42px;padding:8px 12px;
+  border:1px solid var(--rule);border-radius:7px;
+  background:var(--surface);color:var(--ink);
+  font:400 14px/1.3 var(--ui);
+}
+.finder input::placeholder{color:var(--faint)}
+
+.group{display:grid;gap:5px}
+.group > h2{
+  font:500 10px/1 var(--data);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--faint);margin:6px 0 3px;
+}
+.work{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 10px;align-items:baseline;
+  width:100%;text-align:left;cursor:pointer;
+  padding:9px 11px;border:1px solid transparent;border-radius:7px;
+  background:none;color:inherit;font:inherit;
+}
+.work:hover{background:var(--raised)}
+.work .t{font:500 14px/1.3 var(--ui);overflow-wrap:anywhere}
+.work .n{font:400 11px/1 var(--data);color:var(--faint);font-variant-numeric:tabular-nums;white-space:nowrap}
+.work .d{grid-column:1/-1;font:400 12px/1.4 var(--ui);color:var(--muted)}
+.work[aria-current="true"]{
+  background:var(--raised);border-color:var(--rule);
+  box-shadow:inset 3px 0 0 var(--pen);
+}
+.work[aria-current="true"] .t{color:var(--pen)}
+
+.escape{border-top:1px solid var(--rule-soft);padding-top:12px;display:grid;gap:7px}
+.escape summary{
+  font:500 12px/1.3 var(--ui);color:var(--muted);cursor:pointer;list-style:none;
+  display:flex;align-items:center;gap:6px;min-height:28px;
+}
+.escape summary::-webkit-details-marker{display:none}
+.escape summary::before{content:"+";font:500 14px/1 var(--data);color:var(--faint)}
+.escape[open] summary::before{content:"–"}
+.escape .body{display:grid;gap:7px;padding-top:2px}
+.escape input{
+  width:100%;min-height:40px;padding:7px 10px;border:1px solid var(--rule);border-radius:6px;
+  background:var(--surface);color:var(--ink);font:400 12px/1.3 var(--data);
+}
+.escape p{margin:0;font:400 11.5px/1.45 var(--ui);color:var(--faint)}
+
+/* ---------- contact sheet ---------- */
+.sheet{min-width:0;display:grid;gap:14px;align-content:start}
+.sheet-head{display:grid;gap:8px}
+.sheet-head .title{
+  font:600 clamp(18px,2.2vw,23px)/1.2 var(--display);margin:0;text-wrap:balance;
+}
+.sheet-head .sub{margin:0;font:400 13.5px/1.5 var(--ui);color:var(--muted);max-width:62ch}
+.sheet-bar{
+  display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;
+  padding:9px 12px;border:1px solid var(--rule);border-radius:8px;background:var(--surface);
+}
+.sheet-bar .meta{font:400 11.5px/1.3 var(--data);color:var(--muted);font-variant-numeric:tabular-nums}
+.sheet-bar .spacer{flex:1 1 auto;min-width:0}
+.jump{display:flex;align-items:center;gap:6px}
+.jump label{font:500 11px/1 var(--data);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.jump input{
+  width:72px;min-height:36px;padding:4px 8px;text-align:center;
+  border:1px solid var(--rule);border-radius:6px;background:var(--raised);color:var(--ink);
+  font:500 13px/1 var(--data);font-variant-numeric:tabular-nums;
+}
+
+.grid{
+  display:grid;gap:12px;
+  grid-template-columns:repeat(auto-fill,minmax(104px,1fr));
+}
+@media (min-width:600px){.grid{grid-template-columns:repeat(auto-fill,minmax(126px,1fr))}}
+.leaf{
+  display:grid;gap:5px;padding:0;border:0;background:none;color:inherit;font:inherit;
+  cursor:pointer;text-align:center;
+}
+.leaf .frame{
+  background:var(--sheet-ground);border:1px solid var(--rule-soft);border-radius:3px;
+  aspect-ratio:4/3;overflow:hidden;display:grid;place-items:center;
+  box-shadow:var(--shadow);
+}
+.leaf img{width:100%;height:100%;max-width:100%;object-fit:contain;display:block}
+.empty{
+  grid-column:1/-1;margin:0;padding:22px 16px;border:1px dashed var(--rule);border-radius:8px;
+  font:400 13.5px/1.6 var(--ui);color:var(--muted);text-align:center;
+}
+.leaf .cap{font:400 10.5px/1 var(--data);color:var(--faint);font-variant-numeric:tabular-nums}
+.leaf:hover .frame{box-shadow:var(--shadow-lift)}
+.leaf[aria-current="true"] .frame{border-color:var(--pen);box-shadow:0 0 0 2px var(--pen),var(--shadow-lift)}
+.leaf[aria-current="true"] .cap{color:var(--pen);font-weight:500}
+.leaf.gone{display:none}
+
+/* ---------- page detail ---------- */
+.detail{
+  position:fixed;inset:0;z-index:40;
+  background:var(--ground);
+  background:color-mix(in srgb, var(--ground) 86%, transparent);
+  backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);
+  display:grid;place-items:end center;padding:16px;overflow-y:auto;
+}
+@media (min-width:860px){.detail{place-items:center}}
+.detail[hidden]{display:none!important}
+.panel{
+  width:100%;max-width:760px;background:var(--surface);
+  border:1px solid var(--rule);border-radius:12px;box-shadow:var(--shadow-lift);
+  padding:clamp(14px,2.6vw,22px);display:grid;gap:14px;
+}
+.panel-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.panel-top h3{margin:0;font:600 17px/1.25 var(--display)}
+.panel-top .where{margin:2px 0 0;font:400 11.5px/1.4 var(--data);color:var(--muted)}
+.panel-top .where b{color:var(--pen);font-weight:500}
+.x{
+  min-width:38px;min-height:38px;display:grid;place-items:center;flex:none;
+  border:1px solid var(--rule);border-radius:7px;background:var(--raised);color:var(--muted);
+  font:400 17px/1 var(--ui);cursor:pointer;
+}
+.x:hover{color:var(--ink)}
+
+.plate{
+  background:var(--sheet-ground);border:1px solid var(--rule-soft);border-radius:5px;
+  overflow:hidden;display:grid;place-items:center;min-height:170px;
+}
+.plate img{width:100%;max-width:100%;display:block}
+
+.controls{display:grid;gap:12px}
+.ctl{display:grid;gap:6px}
+.ctl > .lab{font:500 10px/1 var(--data);letter-spacing:.13em;text-transform:uppercase;color:var(--faint)}
+.seg{display:flex;flex-wrap:wrap;border:1px solid var(--rule);border-radius:7px;overflow:hidden;background:var(--raised);width:fit-content;max-width:100%}
+.seg label{display:block;cursor:pointer}
+.seg input{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
+.seg span{
+  display:flex;align-items:center;min-height:38px;padding:0 13px;
+  font:400 12.5px/1 var(--data);border-right:1px solid var(--rule);color:var(--muted);
+}
+.seg label:last-child span{border-right:0}
+.seg input:checked + span{background:var(--pen);color:var(--on-pen);font-weight:500}
+.seg input:focus-visible + span{outline:2px solid var(--pen);outline-offset:-3px}
+.crop{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+.crop label{display:grid;gap:3px;font:500 10px/1 var(--data);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.crop input{
+  min-height:38px;width:100%;padding:4px 7px;border:1px solid var(--rule);border-radius:6px;
+  background:var(--raised);color:var(--ink);font:400 12.5px/1 var(--data);
+  font-variant-numeric:tabular-nums;text-align:center;
+}
+
+.out{
+  border-top:1px solid var(--rule-soft);padding-top:13px;display:grid;gap:11px;
+}
+.url{
+  margin:0;font:400 12.5px/1.6 var(--data);overflow-wrap:anywhere;word-break:break-all;
+  user-select:all;-webkit-user-select:all;color:var(--muted);
+}
+.url .hi{color:var(--pen);font-weight:500}
+.url .op{color:var(--rules)}
+.acts{display:flex;flex-wrap:wrap;gap:8px}
+.btn{
+  min-height:42px;padding:0 15px;display:inline-flex;align-items:center;gap:7px;
+  border:1px solid var(--rule);border-radius:7px;background:var(--raised);color:var(--ink);
+  font:500 13.5px/1 var(--ui);cursor:pointer;text-decoration:none;
+}
+.btn:hover{border-color:var(--pen)}
+.btn.pen{background:var(--pen);border-color:var(--pen);color:var(--on-pen)}
+.btn.pen:hover{filter:brightness(1.1)}
+.side{display:flex;flex-wrap:wrap;gap:4px 16px}
+.side a{font:400 12px/1.6 var(--ui);color:var(--rules);overflow-wrap:anywhere}
+.tip{margin:0;font:400 12px/1.5 var(--ui);color:var(--faint);max-width:60ch}
+
+footer{
+  margin-top:34px;padding-top:16px;border-top:1px solid var(--rule);
+  display:grid;gap:7px;max-width:70ch;
+}
+footer p{margin:0;font:400 12.5px/1.6 var(--ui);color:var(--faint)}
+footer b{color:var(--muted);font-weight:500}
+code{font:400 12px var(--data);color:var(--rules)}
+
+@media (prefers-reduced-motion:no-preference){
+  .work,.btn,.x,.seg span,.leaf .frame{transition:background-color .13s,color .13s,border-color .13s,box-shadow .16s}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <h1>Brahms <em>in his own hand</em></h1>
+    <p class="tally"><b>21</b> manuscripts · <b>985</b> page images<br>Library of Congress · native resolution</p>
+  </header>
+
+  <div class="app">
+    <aside class="shelf">
+      <div class="finder">
+        <input id="find" type="search" placeholder="Filter by work or opus…" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Filter the shelf">
+      </div>
+      <div id="shelfList"></div>
+      <details class="escape">
+        <summary>Something else at LoC</summary>
+        <div class="body">
+          <input id="other" type="text" inputmode="url" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Item number or /resource/ URL">
+          <input id="otherN" type="number" inputmode="numeric" min="1" max="2000" value="120" aria-label="Pages to try">
+          <p>A <code>/resource/</code> address carries the ID. A bare item number needs the API, which may be blocked from here — if it is, set a page count and missing pages just drop out of the sheet.</p>
+        </div>
+      </details>
+    </aside>
+
+    <main class="sheet">
+      <div class="sheet-head">
+        <h2 class="title" id="wTitle"></h2>
+        <p class="sub" id="wSub"></p>
+      </div>
+      <div class="sheet-bar">
+        <span class="meta" id="wMeta"></span>
+        <span class="spacer"></span>
+        <span class="jump">
+          <label for="jumpTo">image</label>
+          <input id="jumpTo" type="number" inputmode="numeric" min="1" value="19">
+        </span>
+      </div>
+      <div class="grid" id="grid"></div>
+    </main>
+  </div>
+
+  <footer>
+    <p><b>Saving on iPad:</b> open the image, then Share → Save to Files. Save to Photos re-encodes it and you lose the point of pulling a TIFF.</p>
+    <p><b>The mapping:</b> the <code>sp=</code> number in LoC's own viewer is the image number — <code>sp=19</code> is image <code>0019</code>. The manuscript's written page numbers are a separate sequence; for the Third Symphony image = written page + 2, verified against image 0020 carrying the hand-numbered 18. Other items haven't been checked.</p>
+    <p>Page counts and identifiers were read from the LoC API item by item, not inferred. The Violin Concerto's corrected solo part (Brahms and Joachim) is listed in the research guide but its API record 404s, so it isn't here.</p>
+  </footer>
+</div>
+
+<div class="detail" id="detail" hidden role="dialog" aria-modal="true" aria-labelledby="dTitle">
+  <div class="panel">
+    <div class="panel-top">
+      <div>
+        <h3 id="dTitle">—</h3>
+        <p class="where" id="dWhere">—</p>
+      </div>
+      <button class="x" id="dClose" type="button" aria-label="Close">✕</button>
+    </div>
+
+    <div class="plate"><img id="dPreview" alt="" decoding="async"></div>
+
+    <div class="controls">
+      <div class="ctl">
+        <span class="lab">Format</span>
+        <div class="seg" role="radiogroup" aria-label="Format">
+          <label><input type="radio" name="fmt" value="jpg" checked><span>jpg</span></label>
+          <label><input type="radio" name="fmt" value="tif"><span>tif · lossless</span></label>
+          <label><input type="radio" name="fmt" value="png"><span>png</span></label>
+        </div>
+      </div>
+      <div class="ctl">
+        <span class="lab">Size</span>
+        <div class="seg" role="radiogroup" aria-label="Size">
+          <label><input type="radio" name="size" value="full" checked><span>native</span></label>
+          <label><input type="radio" name="size" value="3000,"><span>3000px</span></label>
+          <label><input type="radio" name="size" value="1200,"><span>1200px</span></label>
+          <label><input type="radio" name="size" value="pct:50"><span>50%</span></label>
+        </div>
+      </div>
+      <div class="ctl">
+        <span class="lab">Region</span>
+        <div class="seg" role="radiogroup" aria-label="Region">
+          <label><input type="radio" name="reg" value="full" checked><span>whole leaf</span></label>
+          <label><input type="radio" name="reg" value="square"><span>square</span></label>
+          <label><input type="radio" name="reg" value="crop"><span>crop</span></label>
+        </div>
+        <div class="crop" id="cropBox" hidden>
+          <label>x<input id="cx" type="number" inputmode="numeric" min="0" value="0"></label>
+          <label>y<input id="cy" type="number" inputmode="numeric" min="0" value="0"></label>
+          <label>w<input id="cw" type="number" inputmode="numeric" min="1" value="2000"></label>
+          <label>h<input id="ch" type="number" inputmode="numeric" min="1" value="1200"></label>
+        </div>
+      </div>
+      <div class="ctl">
+        <span class="lab">Rotate</span>
+        <div class="seg" role="radiogroup" aria-label="Rotation">
+          <label><input type="radio" name="rot" value="0" checked><span>0°</span></label>
+          <label><input type="radio" name="rot" value="90"><span>90°</span></label>
+          <label><input type="radio" name="rot" value="180"><span>180°</span></label>
+          <label><input type="radio" name="rot" value="270"><span>270°</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="out">
+      <p class="url" id="dUrl"></p>
+      <div class="acts">
+        <a class="btn pen" id="dOpen" target="_blank" rel="noopener">Open the file</a>
+        <button class="btn" id="dCopy" type="button">Copy link</button>
+      </div>
+      <div class="side">
+        <a id="dInfo" target="_blank" rel="noopener">info.json</a>
+        <a id="dPdf" target="_blank" rel="noopener">whole item as PDF</a>
+        <a id="dViewer" target="_blank" rel="noopener">this page in LoC's viewer</a>
+      </div>
+      <p class="tip" id="dTip"></p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var TILE = "https://tile.loc.gov/image-services/iiif/";
+  var STORE = "https://tile.loc.gov/storage-services/public/music/";
+
+  /* Identifiers and page counts read from loc.gov/item/<n>/?fo=json, one at a time.
+     offset: image number minus the manuscript's own written page number. Only set
+     where it has actually been checked against a numbered leaf. */
+  var WORKS = [
+    {g:"Orchestral & concerted", w:[
+      {item:"2008573409", id:"musihas-200152859", n:108, offset:2, t:"Symphony No. 3 in F, Op. 90", d:"Autograph full score. The Andante's string page is image 0019."},
+      {item:"2009545993", id:"musihas-200153237", n:110, t:"Violin Concerto in D, Op. 77", d:"Autograph full score, given to the Library by Fritz Kreisler."},
+      {item:"2008573410", id:"musihas-200153079", n:70,  t:"Symphony No. 3, Op. 90 — two pianos", d:"Brahms's own arrangement, in his hand."},
+      {item:"2008573407", id:"musihas-200153074", n:53,  t:"Symphony No. 1, Op. 68 — four hands", d:"Autograph arrangement for piano duet."},
+      {item:"68044593",   id:"musihas-200153054", n:64,  t:"Piano Concerto No. 1, Op. 15 — four hands", d:"The copy prepared for the publisher."},
+      {item:"68044592",   id:"musihas-200153055", n:28,  t:"Piano Concerto No. 1, Op. 15 — four hands", d:"A second four-hand autograph of the same concerto."}
+    ]},
+    {g:"Chamber", w:[
+      {item:"2008560635", id:"musihas-200153062", n:86, t:"Piano Quintet in F minor, Op. 34", d:"Autograph full score."},
+      {item:"2008560616", id:"musihas-200153056", n:76, t:"String Sextet No. 1 in B♭, Op. 18", d:"Score and sketches — the only sketch material on the shelf. He destroyed most of it."},
+      {item:"2008560636", id:"musihas-200153063", n:54, t:"String Sextet No. 2 in G, Op. 36", d:"Autograph arrangement."},
+      {item:"2008573427", id:"musihas-200153077", n:50, t:"Piano Trio No. 2 in C, Op. 87", d:"Autograph."},
+      {item:"2008560645", id:"musihas-200153067", n:40, t:"Horn Trio in E♭, Op. 40", d:"Ink with pencil over it, and pp. 9–10 in a copyist's hand — revision layers and a scribal hand on one stock."}
+    ]},
+    {g:"Piano", w:[
+      {item:"2008560632", id:"musihas-200153058", n:34, t:"Schumann Variations, Op. 23", d:"Piano four hands. Titled on the manuscript “für eine liebe Freundin”."},
+      {item:"2008560633", id:"musihas-200153059", n:30, t:"Handel Variations, Op. 24", d:"Autograph."}
+    ]},
+    {g:"Choral & song", w:[
+      {item:"2008560648", id:"musihas-200153070", n:58, t:"Ein deutsches Requiem, Op. 45", d:"Autograph arrangement for piano four hands."},
+      {item:"2009545994", id:"musihas-200217561", n:48, t:"Schicksalslied, Op. 54", d:"Chorus and orchestra."},
+      {item:"67058180",   id:"musihas-200153075", n:20, t:"Romanzen und Lieder, Op. 84", d:"Nos. 1, 2, 3 and 5."},
+      {item:"63035150",   id:"musihas-200153064", n:14, t:"Drei geistliche Chöre, Op. 37", d:"Women's voices, unaccompanied."},
+      {item:"2015563415", id:"musihas-200217563", n:8,  t:"Von ewiger Liebe, Op. 43 no. 1", d:"Eight leaves."},
+      {item:"2008561143", id:"musihas-200153928", n:6,  t:"Magyarisch, Op. 46 no. 2", d:"Six leaves."}
+    ]},
+    {g:"Cadenzas", w:[
+      {item:"ihas.200153134", id:"musihas-200153134", n:24, t:"Cadenzas — Bach and Mozart", d:"Bach BWV 1052; Mozart K. 453, K. 466, K. 491. Brahms's hand."},
+      {item:"2008561150", id:"musihas-200154555", n:4, t:"Cadenza, Mozart K. 466 (i)", d:"Clara Schumann's hand, drawing on Brahms's material — the one leaf here that isn't his."}
+    ]}
+  ];
+
+  var $ = function(id){ return document.getElementById(id); };
+  var cur = null;   /* current work */
+  var curN = 1;     /* current image number */
+  var dims = {};    /* id.NNNN -> "W × H" once info.json has answered */
+
+  function pad(n){ return String(Math.max(1, n|0)).padStart(4,"0"); }
+  function base(w){ return w.base || ("public:music:" + w.id + ":" + w.id); }
+  function url(w, n, region, size, rot, fmt){
+    return TILE + base(w) + "." + pad(n) + "/" + region + "/" + size + "/" + rot + "/default." + fmt;
+  }
+  function radio(name){ var el = document.querySelector('input[name="'+name+'"]:checked'); return el ? el.value : null; }
+  function esc(s){ return String(s).replace(/[&<>"]/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+  function remember(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+  function recall(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+
+  /* ---------- shelf ---------- */
+  function buildShelf(){
+    var host = $("shelfList");
+    host.innerHTML = "";
+    WORKS.forEach(function(grp){
+      var sec = document.createElement("div");
+      sec.className = "group";
+      var h = document.createElement("h2");
+      h.textContent = grp.g;
+      sec.appendChild(h);
+      grp.w.forEach(function(w){
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "work";
+        b.dataset.item = w.item;
+        b.dataset.hay = (w.t + " " + w.d + " " + w.item).toLowerCase();
+        b.innerHTML = '<span class="t">' + esc(w.t) + '</span>' +
+                      '<span class="n">' + w.n + ' pp</span>' +
+                      '<span class="d">' + esc(w.d) + '</span>';
+        b.addEventListener("click", function(){ openWork(w, 1); });
+        sec.appendChild(b);
+      });
+      host.appendChild(sec);
+    });
+  }
+
+  function filterShelf(q){
+    q = (q||"").trim().toLowerCase();
+    document.querySelectorAll(".group").forEach(function(sec){
+      var any = false;
+      sec.querySelectorAll(".work").forEach(function(b){
+        var hit = !q || b.dataset.hay.indexOf(q) !== -1;
+        b.hidden = !hit;
+        if(hit) any = true;
+      });
+      sec.hidden = !any;
+    });
+  }
+
+  /* ---------- contact sheet ---------- */
+  function openWork(w, startAt){
+    cur = w;
+    remember("brahms-shelf-work", w.item);
+    document.querySelectorAll(".work").forEach(function(b){
+      b.setAttribute("aria-current", b.dataset.item === w.item ? "true" : "false");
+    });
+    $("wTitle").textContent = w.t;
+    $("wSub").textContent = w.d;
+    $("wMeta").textContent = w.n + " images · " + w.id + " · item " + w.item;
+    var jt = $("jumpTo");
+    jt.max = w.n;
+    jt.value = Math.min(startAt || 1, w.n);
+
+    var grid = $("grid");
+    grid.innerHTML = "";
+    tally = {ok:0, bad:0, warned:false};
+    var frag = document.createDocumentFragment();
+    for(var i = 1; i <= w.n; i++){
+      frag.appendChild(leaf(w, i));
+    }
+    grid.appendChild(frag);
+    markLeaf(null);
+  }
+
+  /* If nothing at all loads, say so rather than showing a blank sheet — that
+     usually means no connection, not that the pages are missing. */
+  var tally = {ok:0, bad:0, warned:false};
+  function score(good){
+    good ? tally.ok++ : tally.bad++;
+    if(tally.warned || tally.ok > 0 || tally.bad < 8) return;
+    tally.warned = true;
+    var p = document.createElement("p");
+    p.className = "empty";
+    p.textContent = "No page images are loading — tile.loc.gov can't be reached. Check the connection. (If this page is running inside a sandbox that blocks outside images, it will never load them; use the hosted copy.)";
+    var g = $("grid"); g.insertBefore(p, g.firstChild);
+  }
+
+  function leaf(w, i){
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "leaf";
+    b.dataset.n = i;
+    var img = new Image();
+    img.loading = "lazy";
+    img.decoding = "async";
+    img.alt = "Image " + pad(i);
+    img.src = url(w, i, "full", "pct:6.25", 0, "jpg");
+    img.addEventListener("load", function(){ score(true); });
+    img.addEventListener("error", function(){
+      /* Only drop the slot where the count was a guess. For the shelf the counts
+         came from the API, so a failure is a network problem, not a missing page —
+         keep the frame so the sheet doesn't quietly reflow around a gap. */
+      if(w.guess) b.classList.add("gone");
+      score(false);
+    });
+    var fr = document.createElement("span");
+    fr.className = "frame";
+    fr.appendChild(img);
+    var cap = document.createElement("span");
+    cap.className = "cap";
+    cap.textContent = pad(i);
+    b.appendChild(fr);
+    b.appendChild(cap);
+    b.addEventListener("click", function(){ openPage(i); });
+    return b;
+  }
+
+  function markLeaf(n){
+    document.querySelectorAll(".leaf").forEach(function(b){
+      b.setAttribute("aria-current", String(Number(b.dataset.n) === n));
+    });
+  }
+
+  /* ---------- page detail ---------- */
+  function openPage(n){
+    if(!cur) return;
+    curN = n;
+    markLeaf(n);
+    $("dTitle").textContent = cur.t;
+    $("dPreview").src = url(cur, n, "full", "pct:12.5", 0, "jpg");
+    $("dPreview").alt = cur.t + ", image " + pad(n);
+    $("dViewer").href = "https://www.loc.gov/resource/music." + cur.id + "/?sp=" + n + "&st=image";
+    $("dPdf").href = STORE + cur.id + "/" + cur.id + ".pdf";
+    $("detail").hidden = false;
+    $("dClose").focus();
+    paint();
+    measure(n);
+  }
+
+  function measure(n){
+    var key = cur.id + "." + pad(n);
+    if(dims[key]){ paint(); return; }
+    fetch(TILE + base(cur) + "." + pad(n) + "/info.json")
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        if(j && j.width){ dims[key] = j.width + " × " + j.height; if(curN === n) paint(); }
+      })
+      .catch(function(){ /* offline, or the endpoint declined — the link still works */ });
+  }
+
+  function paint(){
+    if(!cur) return;
+    var n = curN, fmt = radio("fmt"), size = radio("size"), rot = radio("rot");
+    var reg = radio("reg");
+    var region = reg === "crop"
+      ? [$("cx").value, $("cy").value, $("cw").value, $("ch").value]
+          .map(function(v){ return Math.max(0, parseInt(v,10) || 0); }).join(",")
+      : reg;
+    var u = url(cur, n, region, size, rot, fmt);
+
+    var where = "image <b>" + pad(n) + "</b> of " + cur.n;
+    if(cur.offset && n > cur.offset) where += " · written p. " + (n - cur.offset);
+    var key = cur.id + "." + pad(n);
+    if(dims[key]) where += " · " + dims[key] + " px";
+    $("dWhere").innerHTML = where;
+
+    var tail = "/" + region + "/" + size + "/" + rot + "/default." + fmt;
+    $("dUrl").innerHTML =
+      esc(TILE) + esc(base(cur)) + '.<span class="hi">' + pad(n) + '</span>' +
+      '<span class="op">' + esc(tail) + "</span>";
+
+    $("dOpen").href = u;
+    $("dInfo").href = TILE + base(cur) + "." + pad(n) + "/info.json";
+    $("dCopy").dataset.url = u;
+
+    $("dTip").textContent = fmt === "tif"
+      ? "Lossless, and large — tens of megabytes at native size. Worth it for anything you'll measure or dewarp, not for reading."
+      : (size === "full"
+          ? "Native resolution. The JPEG LoC serves is compressed; switch to tif if the page is going to be analysed rather than read."
+          : "A resampled derivative. Switch to native for source work.");
+  }
+
+  function closeDetail(){
+    $("detail").hidden = true;
+    $("dPreview").removeAttribute("src");
+  }
+
+  /* ---------- something else at LoC ---------- */
+  function tryOther(){
+    var s = $("other").value.trim();
+    if(!s) return;
+    var count = Math.max(1, Math.min(2000, parseInt($("otherN").value, 10) || 120));
+    var m = s.match(/loc\.gov\/resource\/([A-Za-z0-9]+)\.([^\/?#]+)/);
+    if(m){
+      var id = m[2].replace(/\.0$/, "");
+      var sp = (s.match(/[?&]sp=(\d+)/) || [])[1];
+      openWork({
+        item:"—", id:id, n:count, guess:true, t:"Item " + id,
+        base:"public:" + m[1] + ":" + id + ":" + id,
+        d:"Pasted from a viewer address. Page count is a guess — images that don't exist drop out of the sheet."
+      }, sp ? parseInt(sp,10) : 1);
+      return;
+    }
+    var it = s.match(/loc\.gov\/item\/([^\/?#]+)/);
+    var num = it ? it[1] : s;
+    fetch("https://www.loc.gov/item/" + num + "/?fo=json")
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        var txt = JSON.stringify(j);
+        var hit = txt.match(/image-services\/iiif\/([^"\/]+?)\.(\d{4})\//);
+        if(!hit) throw new Error("no images");
+        var parts = decodeURIComponent(hit[1]).split(":");
+        var all = txt.match(/image-services\/iiif\/[^"]*?\.(\d{4})\//g) || [];
+        var max = all.reduce(function(a, u){
+          var d = parseInt(u.slice(-5, -1), 10); return d > a ? d : a; }, 0);
+        openWork({
+          item:num, id:parts[parts.length-1], n:max || count,
+          base:decodeURIComponent(hit[1]),
+          t:(j.item && j.item.title) || ("Item " + num),
+          d:"Resolved live from the LoC API."
+        }, 1);
+      })
+      .catch(function(){
+        $("other").value = "";
+        $("other").placeholder = "Couldn't reach the API — paste a /resource/ URL instead";
+      });
+  }
+
+  /* ---------- copy ---------- */
+  function copy(){
+    var u = $("dCopy").dataset.url;
+    if(!u) return;
+    var done = function(){
+      $("dCopy").textContent = "Copied";
+      setTimeout(function(){ $("dCopy").textContent = "Copy link"; }, 1500);
+    };
+    var manual = function(){
+      var sel = window.getSelection(), rng = document.createRange();
+      rng.selectNodeContents($("dUrl"));
+      sel.removeAllRanges(); sel.addRange(rng);
+      $("dCopy").textContent = "Selected — tap Copy";
+      setTimeout(function(){ $("dCopy").textContent = "Copy link"; }, 2400);
+    };
+    try{
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(u).then(done, manual);
+      } else { manual(); }
+    }catch(e){ manual(); }
+  }
+
+  /* ---------- wiring ---------- */
+  buildShelf();
+  $("find").addEventListener("input", function(){ filterShelf(this.value); });
+  $("jumpTo").addEventListener("change", function(){
+    var n = Math.max(1, Math.min(cur ? cur.n : 1, parseInt(this.value, 10) || 1));
+    this.value = n;
+    openPage(n);
+    var el = document.querySelector('.leaf[data-n="' + n + '"]');
+    if(el) el.scrollIntoView({block:"center", behavior:"smooth"});
+  });
+  $("dClose").addEventListener("click", closeDetail);
+  $("detail").addEventListener("click", function(e){ if(e.target === this) closeDetail(); });
+  document.addEventListener("keydown", function(e){
+    if($("detail").hidden) return;
+    if(e.key === "Escape") closeDetail();
+    if(e.key === "ArrowRight" && curN < cur.n) openPage(curN + 1);
+    if(e.key === "ArrowLeft" && curN > 1) openPage(curN - 1);
+  });
+  document.querySelectorAll('.detail input[type=radio]').forEach(function(r){
+    r.addEventListener("change", function(){
+      var crop = radio("reg") === "crop";
+      $("cropBox").hidden = !crop;
+      paint();
+    });
+  });
+  ["cx","cy","cw","ch"].forEach(function(id){ $(id).addEventListener("input", paint); });
+  $("dCopy").addEventListener("click", copy);
+  $("other").addEventListener("change", tryOther);
+  $("otherN").addEventListener("change", function(){ if($("other").value.trim()) tryOther(); });
+
+  /* open on the plate the kit was built from, or wherever he was last */
+  var last = recall("brahms-shelf-work");
+  var pick = null;
+  WORKS.forEach(function(g){ g.w.forEach(function(w){ if(w.item === last) pick = w; }); });
+  openWork(pick || WORKS[0].w[0], 19);
+})();
+</script>
+</body>
+</html>
