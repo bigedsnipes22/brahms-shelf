@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "scoretools"
+version = "0.1.0"
+description = "Cut score pages into systems, splice them onto any page shape, and erase repeated marks."
+requires-python = ">=3.9"
+dependencies = ["numpy>=1.22", "pillow>=9.1"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.scripts]
+scoretools = "scoretools.cli:main"
+
+[tool.setuptools]
+packages = ["scoretools"]
